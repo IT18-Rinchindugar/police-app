@@ -1,21 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { AppLoading } from "expo";
+import { useFonts } from "expo-font";
+import { StatusBar } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { HomeNavigator } from "./src/screens";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+const App = () => {
+  let [fontsLoaded] = useFonts({
+    "Montserrat-Bold": require("./assets/fonts/Montserrat-Bold.ttf"),
+    "Montserrat-Regular": require("./assets/fonts/Montserrat-Regular.ttf"),
+    "Montserrat-SemiBold": require("./assets/fonts/Montserrat-SemiBold.ttf"),
+  });
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  const Stack = createStackNavigator();
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  } else {
+    return (
+      <>
+        <StatusBar barStyle="dark-content" backgroundColor="#fff" />
+        <NavigationContainer>
+          <Stack.Navigator headerMode="none">
+            <Stack.Screen name="Home" component={HomeNavigator} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </>
+    );
+  }
+};
+
+export default App;
