@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components/native";
 
-const CardContainer = styled.View`
-  flex: 1;
+const CardContainer = styled.TouchableOpacity`
   flex-direction: column;
   margin-vertical: 8px;
   height: 267px;
@@ -28,7 +27,7 @@ const CardText = styled.Text`
 `;
 const NewsCard = () => {
   return (
-    <CardContainer>
+    <CardContainer activeOpacity={0.7}>
       <CardImage
         source={{
           uri:
