@@ -25,10 +25,10 @@ const data = [
 const MainContainer = styled.View`
   flex: 1;
   flex-direction: column;
+  background-color: ${Alabaster};
 `;
 const Container = styled.View`
   flex: 1;
-  background-color: ${Alabaster};
   margin-horizontal: 14px;
   justify-content: center;
   align-items: center;

@@ -3,8 +3,7 @@ import Header from "../../components/Header";
 import styled from "styled-components/native";
 import { PoliceColors } from "../../styles";
 import NewsCard from "../../components/NewsCard";
-import { FlatList, ActivityIndicator, View } from "react-native";
-import { cos } from "react-native-reanimated";
+import { FlatList } from "react-native";
 const { Alabaster } = PoliceColors;
 
 const items = [
@@ -26,7 +25,7 @@ const items = [
   {
     id: 4,
     title:
-      "Монголчуудын шар айрагны хэрэглээ дэлхийд эхний 10 - т бичигдэ байна...",
+      "Монголд архи үйлдвэрлэх цэг 2020 оны байдлаар 145 салбар байна... Монголд архи үйлдвэрлэх цэг 2020 оны байдлаар 145 салбар байна...",
   },
 ];
 
@@ -45,7 +44,7 @@ const Indicator = styled.ActivityIndicator`
   padding-vertical: 20px;
 `;
 
-const NewsScreen = ({ route }) => {
+const NewsListScreen = ({ route, navigation }) => {
   const [fetching, setFetching] = useState(false);
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -67,7 +66,13 @@ const NewsScreen = ({ route }) => {
           data={data}
           nestedScrollEnabled
           ListFooterComponent={renderFooter}
-          renderItem={({ id, title }) => <NewsCard key={id} title={title} />}
+          renderItem={({ item }) => (
+            <NewsCard
+              key={item.id}
+              title={item.title}
+              onPress={() => navigation.navigate("NewsDetails", { data: item })}
+            />
+          )}
           keyExtractor={(item) => item.id}
           key={1}
           maxToRenderPerBatch={6}
@@ -80,4 +85,4 @@ const NewsScreen = ({ route }) => {
   );
 };
 
-export default NewsScreen;
+export default NewsListScreen;
