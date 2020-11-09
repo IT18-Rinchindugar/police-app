@@ -15,7 +15,7 @@ const CardImage = styled.Image`
   border-top-right-radius: 6px;
 `;
 const CardText = styled.Text`
-  height: 40px;
+  height: 38px;
   margin-top: 14px;
   padding-horizontal: 14px;
   font-family: Montserrat-Regular;
@@ -25,18 +25,17 @@ const CardText = styled.Text`
   line-height: 18px;
   text-align: left;
 `;
-const NewsCard = () => {
+const NewsCard = (props) => {
+  const { onPress, title } = props;
   return (
-    <CardContainer activeOpacity={0.7}>
+    <CardContainer activeOpacity={0.7} onPress={onPress}>
       <CardImage
         source={{
           uri:
             "https://images.pexels.com/photos/4954715/pexels-photo-4954715.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
         }}
       />
-      <CardText>
-        Монголчуудын шар айрагны хэрэглээ дэлхийд эхний 10 - т бичигдэ байна...
-      </CardText>
+      <CardText>{title}</CardText>
     </CardContainer>
   );
 };
