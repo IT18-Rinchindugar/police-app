@@ -15,7 +15,7 @@ const CardImage = styled.Image`
   border-top-right-radius: 6px;
 `;
 const CardText = styled.Text`
-  height: 38px;
+  height: 37px;
   margin-top: 14px;
   padding-horizontal: 14px;
   font-family: Montserrat-Regular;
@@ -26,13 +26,12 @@ const CardText = styled.Text`
   text-align: left;
 `;
 const NewsCard = (props) => {
-  const { onPress, title } = props;
+  const { onPress, title, photo } = props;
   return (
     <CardContainer activeOpacity={0.7} onPress={onPress}>
       <CardImage
         source={{
-          uri:
-            "https://images.pexels.com/photos/4954715/pexels-photo-4954715.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+          uri: `http://202.70.34.25:3001/uploads/${photo}`,
         }}
       />
       <CardText>{title}</CardText>

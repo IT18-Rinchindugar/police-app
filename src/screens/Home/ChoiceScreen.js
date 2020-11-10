@@ -12,8 +12,13 @@ const data = [
     navigateTo: "News",
     type: "news",
   },
-  { id: 2, title: "Гэмт хэрэг ", navigateTo: "News", type: "news" },
-  { id: 3, title: "Архины сөрөг нөлөө", navigateTo: "News", type: "news" },
+  { id: 2, title: "Гэмт хэрэг ", navigateTo: "News", type: "monnews" },
+  {
+    id: 3,
+    title: "Архины сөрөг нөлөө",
+    navigateTo: "News",
+    type: "healthnews",
+  },
   {
     id: 4,
     title: "Зөв зохистой хэрэглээ",
@@ -22,7 +27,7 @@ const data = [
   },
 ];
 
-const MainContainer = styled.View`
+const MainContainer = styled.SafeAreaView`
   flex: 1;
   flex-direction: column;
   background-color: ${Alabaster};
