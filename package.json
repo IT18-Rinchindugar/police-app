@@ -11,9 +11,11 @@
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/native": "^5.8.6",
     "@react-navigation/stack": "^5.12.3",
+    "axios": "^0.21.0",
     "expo": "~39.0.2",
     "expo-font": "~8.3.0",
     "expo-status-bar": "~1.0.2",
+    "moment": "^2.29.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.4.tar.gz",
@@ -29,5 +31,6 @@
   "devDependencies": {
     "@babel/core": "~7.9.0"
   },
-  "private": true
+  "private": true,
+  "proxy": "http://202.70.34.25:3001"
 }

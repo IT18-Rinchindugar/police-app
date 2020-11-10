@@ -1,3 +1,3 @@
 import PoliceColors from "./colors/police";
-
-export { PoliceColors };
+import Utils from "./utils";
+export { PoliceColors, Utils };

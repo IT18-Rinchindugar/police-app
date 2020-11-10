@@ -8,7 +8,7 @@ import { ScrollView } from "react-native";
 import FlashMessage, { showMessage } from "react-native-flash-message";
 
 const { Alabaster } = PoliceColors;
-const NewsContainer = styled.View`
+const NewsContainer = styled.SafeAreaView`
   flex: 1;
   flex-direction: column;
 `;
@@ -47,7 +47,7 @@ const items = [
   { id: 1, label: "Эрэгтэй" },
   { id: 2, label: "Эмэгтэй" },
 ];
-const NewsScreen = ({ route }) => {
+const NewsScreen = ({ route, navigation }) => {
   const { title, type } = route.params;
   const [picker, setPicker] = useState(items[0]);
   const [age, setAge] = useState(0);
@@ -72,7 +72,7 @@ const NewsScreen = ({ route }) => {
     <>
       <FlashMessage position="top" />
       <NewsContainer>
-        <Header title={title} />
+        <Header title={title} navigation={navigation} />
         <ScrollView>
           <Container behavior={Platform.OS === "ios" ? "padding" : "height"}>
             <HealthTitle>
