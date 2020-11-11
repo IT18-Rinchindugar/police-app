@@ -19,6 +19,7 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.4.tar.gz",
+    "react-native-config": "^1.4.1",
     "react-native-flash-message": "^0.1.17",
     "react-native-gesture-handler": "~1.7.0",
     "react-native-picker-select": "^8.0.2",
@@ -31,6 +32,5 @@
   "devDependencies": {
     "@babel/core": "~7.9.0"
   },
-  "private": true,
-  "proxy": "http://202.70.34.25:3001"
+  "private": true
 }
