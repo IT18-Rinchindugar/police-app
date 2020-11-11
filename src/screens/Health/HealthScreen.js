@@ -4,7 +4,7 @@ import styled from "styled-components/native";
 import { PoliceColors } from "../../styles";
 import FormItems from "../../components/FormItems";
 import Button from "../../components/Button";
-import { ScrollView } from "react-native";
+import { KeyboardAvoidingView, ScrollView } from "react-native";
 import FlashMessage, { showMessage } from "react-native-flash-message";
 import Icon from "@expo/vector-icons/Feather";
 const { Alabaster } = PoliceColors;
@@ -13,7 +13,7 @@ const NewsContainer = styled.SafeAreaView`
   flex-direction: column;
 `;
 
-const Container = styled.KeyboardAvoidingView`
+const Container = styled.View`
   flex: 1;
   align-items: center;
   margin-horizontal: 14px;
@@ -93,33 +93,41 @@ const NewsScreen = ({ route, navigation }) => {
       <FlashMessage position="top" />
       <NewsContainer>
         <Header title={title} navigation={navigation} />
-        <ScrollView>
-          <Container behavior={Platform.OS === "ios" ? "padding" : "height"}>
-            <HealthTitle>
-              Та өөрийн жин хүйсээ оруулан өөрт тохирсон зөв зохистой
-              хэрэглээгээ мэдэх боломжтой
-            </HealthTitle>
-            <FormContainer>
-              <FormItems
-                title="Хүйс"
-                type="picker"
-                picker={picker}
-                items={items}
-                setPicker={setPicker}
-              />
-              <FormItems title="НАС" type="age" setAge={setAge} />
-              <FormItems
-                title="Жин"
-                type="weight"
-                subTitle="Кг"
-                setWeight={setWeight}
-              />
-            </FormContainer>
-            <ButtonContainer>
-              <Button title="хайлт хийх" icon="arrow-right" onPress={onPress} />
-            </ButtonContainer>
-          </Container>
-        </ScrollView>
+        <KeyboardAvoidingView
+          behavior={Platform.OS === "ios" ? "padding" : "height"}
+        >
+          <ScrollView style={{ paddingBottom: "100%" }}>
+            <Container>
+              <HealthTitle>
+                Та өөрийн жин хүйсээ оруулан өөрт тохирсон зөв зохистой
+                хэрэглээгээ мэдэх боломжтой
+              </HealthTitle>
+              <FormContainer>
+                <FormItems
+                  title="Хүйс"
+                  type="picker"
+                  picker={picker}
+                  items={items}
+                  setPicker={setPicker}
+                />
+                <FormItems title="НАС" type="age" setAge={setAge} />
+                <FormItems
+                  title="Жин"
+                  type="weight"
+                  subTitle="Кг"
+                  setWeight={setWeight}
+                />
+              </FormContainer>
+              <ButtonContainer>
+                <Button
+                  title="хайлт хийх"
+                  icon="arrow-right"
+                  onPress={onPress}
+                />
+              </ButtonContainer>
+            </Container>
+          </ScrollView>
+        </KeyboardAvoidingView>
         {result && (
           <ResultContainer
             style={{
