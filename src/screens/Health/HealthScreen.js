@@ -6,7 +6,7 @@ import FormItems from "../../components/FormItems";
 import Button from "../../components/Button";
 import { ScrollView } from "react-native";
 import FlashMessage, { showMessage } from "react-native-flash-message";
-
+import Icon from "@expo/vector-icons/Feather";
 const { Alabaster } = PoliceColors;
 const NewsContainer = styled.SafeAreaView`
   flex: 1;
@@ -43,6 +43,24 @@ const ButtonContainer = styled.View`
   background: #5e72e4;
   border-radius: 5px;
 `;
+const ResultContainer = styled.View`
+  position: absolute;
+  height: 60%;
+  width: 83%;
+  top: 160px;
+  border-radius: 15px;
+  margin-horizontal: 30px;
+  background-color: #fff;
+`;
+const ResultCloseButton = styled.TouchableOpacity`
+  height: 30px;
+  width: 30px;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin: 15px;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+`;
 const items = [
   { id: 1, label: "Эрэгтэй" },
   { id: 2, label: "Эмэгтэй" },
@@ -52,6 +70,7 @@ const NewsScreen = ({ route, navigation }) => {
   const [picker, setPicker] = useState(items[0]);
   const [age, setAge] = useState(0);
   const [weight, setWeight] = useState(0);
+  const [result, setResult] = useState(false);
   const onPress = () => {
     if (parseFloat(age) <= 0 || age === "") {
       showMessage({
@@ -67,6 +86,7 @@ const NewsScreen = ({ route, navigation }) => {
       });
       return false;
     }
+    setResult(12);
   };
   return (
     <>
@@ -100,6 +120,25 @@ const NewsScreen = ({ route, navigation }) => {
             </ButtonContainer>
           </Container>
         </ScrollView>
+        {result && (
+          <ResultContainer
+            style={{
+              shadowColor: "#000",
+              shadowOffset: {
+                width: 0,
+                height: 10,
+              },
+              shadowOpacity: 0.53,
+              shadowRadius: 13.97,
+
+              elevation: 21,
+            }}
+          >
+            <ResultCloseButton onPress={() => setResult(false)}>
+              <Icon name="x" size={20} color="#000" />
+            </ResultCloseButton>
+          </ResultContainer>
+        )}
       </NewsContainer>
     </>
   );
