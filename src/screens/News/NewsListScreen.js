@@ -1,34 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import Header from "../../components/Header";
 import styled from "styled-components/native";
 import { PoliceColors } from "../../styles";
 import axios from "axios";
 import NewsCard from "../../components/NewsCard";
-import { FlatList } from "react-native";
+import { FlatList, RefreshControl } from "react-native";
+import FeedLoad from "../../components/FeedLoad";
 const { Alabaster } = PoliceColors;
-
-const items = [
-  {
-    id: 1,
-    title:
-      "Монголчуудын шар айрагны хэрэглээ дэлхийд эхний 10 - т бичигдэ байна...",
-  },
-  {
-    id: 2,
-    title:
-      "Монголчуудын шар айрагны хэрэглээ дэлхийд эхний 10 - т бичигдэ байна...",
-  },
-  {
-    id: 3,
-    title:
-      "Монголчуудын шар айрагны хэрэглээ дэлхийд эхний 10 - т бичигдэ байна...",
-  },
-  {
-    id: 4,
-    title:
-      "Монголд архи үйлдвэрлэх цэг 2020 оны байдлаар 145 салбар байна... Монголд архи үйлдвэрлэх цэг 2020 оны байдлаар 145 салбар байна...",
-  },
-];
 
 const NewsContainer = styled.SafeAreaView`
   flex: 1;
@@ -39,6 +17,7 @@ const NewsContainer = styled.SafeAreaView`
 const Container = styled.View`
   flex: 1;
   margin-horizontal: 14px;
+  background-color: ${Alabaster};
 `;
 
 const Indicator = styled.ActivityIndicator`
@@ -49,18 +28,28 @@ const NewsListScreen = ({ route, navigation }) => {
   const [fetching, setFetching] = useState(false);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
   const [page, setPage] = useState(1);
   const limit = 4;
   const { title, type } = route.params;
-  useEffect(() => {
+  const fetchData = () => {
     axios
       .get(`http://202.70.34.25:3001/api/${type}?page=${page}&limit=${limit}`)
       .then((res) => {
         setLoading(false);
         setData(res.data.data);
+        setRefreshing(false);
       })
       .catch((err) => console.log(err));
+  };
+  useEffect(() => {
+    fetchData();
   }, []);
+  const onRefresh = useCallback(async () => {
+    setRefreshing(true);
+    setPage(1);
+    fetchData();
+  }, [refreshing]);
   const renderFooter = () => {
     if (!fetching) return null;
     return <Indicator size="small" color="#5e72e4" />;
@@ -82,7 +71,7 @@ const NewsListScreen = ({ route, navigation }) => {
       <Header title={title} navigation={navigation} />
       <Container>
         {loading ? (
-          <Indicator size="large" color="#5e72e4" />
+          <FeedLoad />
         ) : (
           <FlatList
             data={data}
@@ -99,6 +88,10 @@ const NewsListScreen = ({ route, navigation }) => {
                 }
               />
             )}
+            refreshControl={
+              <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+            }
+            contentContainerStyle={{ paddingTop: 8 }}
             keyExtractor={(item) => item._id}
             key={1}
             maxToRenderPerBatch={6}
