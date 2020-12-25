@@ -42,6 +42,7 @@ const LogoContainer = styled.View`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 40px;
 `;
 const LogoImage = styled.Image`
   height: 140px;
@@ -62,7 +63,6 @@ const ChoiceScreen = (props) => {
   const { navigation } = props;
   return (
     <MainContainer>
-      <Header />
       <LogoContainer>
         <LogoImage
           source={{

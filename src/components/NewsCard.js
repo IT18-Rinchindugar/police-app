@@ -33,6 +33,7 @@ const NewsCard = (props) => {
         source={{
           uri: `http://202.70.34.25:3001/uploads/${photo}`,
         }}
+        resizeMode="cover"
       />
       <CardText>{title}</CardText>
     </CardContainer>

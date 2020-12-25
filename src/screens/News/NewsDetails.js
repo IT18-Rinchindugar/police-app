@@ -66,9 +66,9 @@ const ContentDescription = styled.Text`
 `;
 
 const ContentText = styled.Text`
-  margin-top: 15px;
+  margin-top: 10px;
   font-family: Montserrat-Regular;
-  font-size: 14px;
+  font-size: 12px;
   font-style: normal;
   font-weight: 400;
   line-height: 20px;
@@ -77,7 +77,7 @@ const ContentText = styled.Text`
 `;
 const ContentAds = styled.Image`
   margin-top: 15px;
-  height: 200px;
+  height: 80px;
   border-radius: 6px;
 `;
 
@@ -112,11 +112,18 @@ const NewsDetails = ({ route, navigation }) => {
           <ContentAds
             source={{
               uri:
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRPDPvwMZRV3LMALAt_X71GpHu8adkJ1USRKg&usqp=CAU",
+                "https://police.gov.mn/resource/policegovmn/Banner/2018/10/12/val3fb1wya6p9rh9/home-slide-5.jpg",
             }}
-            resizeMode="cover"
+            resizeMode="contain"
           />
           <ContentText>{content}</ContentText>
+          <ContentAds
+            source={{
+              uri:
+                "https://police.gov.mn/resource/policegovmn/Banner/2018/10/12/z4b0qjvoo3bajm12/1.jpg",
+            }}
+            resizeMode="contain"
+          />
         </ContentContainer>
       </ScrollNews>
     </DetailsContainer>
