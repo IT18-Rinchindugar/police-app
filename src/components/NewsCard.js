@@ -31,7 +31,7 @@ const NewsCard = (props) => {
     <CardContainer activeOpacity={0.7} onPress={onPress}>
       <CardImage
         source={{
-          uri: `http://202.70.34.25:3001/uploads/${photo}`,
+          uri: `http://103.50.205.163:3001//uploads/${photo}`,
         }}
         resizeMode="cover"
       />

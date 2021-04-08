@@ -34,7 +34,7 @@ const NewsListScreen = ({ route, navigation }) => {
   const { title, type } = route.params;
   const fetchData = () => {
     axios
-      .get(`http://202.70.34.25:3001/api/${type}?page=${page}&limit=${limit}`)
+      .get(`http://103.50.205.163:3001/api/${type}?page=${page}&limit=${limit}`)
       .then((res) => {
         setLoading(false);
         setData(res.data.data);
@@ -58,7 +58,7 @@ const NewsListScreen = ({ route, navigation }) => {
     setFetching(true);
     axios
       .get(
-        `http://202.70.34.25:3001/api/${type}?page=${page + 1}&limit=${limit}`
+        `http://103.50.205.163:3001/api/${type}?page=${page + 1}&limit=${limit}`
       )
       .then((res) => {
         setData(data.concat(res.data.data));

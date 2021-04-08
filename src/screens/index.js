@@ -4,6 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { ChoiceScreen } from "./Home";
 import { NewsListScreen, NewsDetails } from "./News";
 import { HealthScreen } from "./Health";
+import { OtherScreen } from './Others'
 const HomeStack = createStackNavigator();
 export const HomeNavigator = () => {
   return (
@@ -12,6 +13,7 @@ export const HomeNavigator = () => {
       <HomeStack.Screen name="News" component={NewsListScreen} />
       <HomeStack.Screen name="Health" component={HealthScreen} />
       <HomeStack.Screen name="NewsDetails" component={NewsDetails} />
+      <HomeStack.Screen name="Other" component={OtherScreen} />
     </HomeStack.Navigator>
   );
 };

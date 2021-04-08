@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../../components/Header";
+import logo from '../../../assets/logo.png';
 import styled from "styled-components/native";
 import MenuList from "../../components/MenuList";
 import { PoliceColors } from "../../styles";
@@ -12,18 +12,29 @@ const data = [
     navigateTo: "News",
     type: "news",
   },
-  { id: 2, title: "Гэмт хэрэг ", navigateTo: "News", type: "monnews" },
+  { 
+    id: 2, 
+    title: "Гэмт хэрэг ", 
+    navigateTo: "News", 
+    type: "monnews" 
+  },
   {
     id: 3,
     title: "Архины сөрөг нөлөө",
     navigateTo: "News",
     type: "healthnews",
   },
-  {
+/*  {
     id: 4,
     title: "Зөв зохистой хэрэглээ",
     navigateTo: "Health",
     type: "health",
+  }, */
+  {
+    id: 5,
+    title: "Зөв зохистой хэрэглээ",
+    navigateTo: "Other",
+    type: "other",
   },
 ];
 
@@ -39,25 +50,13 @@ const Container = styled.View`
   align-items: center;
 `;
 const LogoContainer = styled.View`
-  flex-direction: column;
+  flex: 0.3;
   justify-content: center;
   align-items: center;
-  margin-top: 40px;
 `;
 const LogoImage = styled.Image`
-  height: 140px;
-  width: 110px;
-`;
-const LogoTitle = styled.Text`
-  width: 200px;
-  font-family: Montserrat-Bold;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 18px;
-  text-align: center;
-  text-transform: uppercase;
-  color: #5e72e4;
+  margin-top: 25%;
+  width: 280px;
 `;
 const ChoiceScreen = (props) => {
   const { navigation } = props;
@@ -65,12 +64,9 @@ const ChoiceScreen = (props) => {
     <MainContainer>
       <LogoContainer>
         <LogoImage
-          source={{
-            uri: `https://police.gov.mn/static/webs/policegovmn/assets/police.logo.png`,
-          }}
+          source={logo}
           resizeMode="contain"
         />
-        <LogoTitle>Цагдаагийн ерөнхий газар</LogoTitle>
       </LogoContainer>
       <Container>
         {data.map(({ title, id, navigateTo, type }) => (
