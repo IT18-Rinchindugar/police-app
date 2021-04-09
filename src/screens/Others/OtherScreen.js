@@ -1,34 +1,29 @@
 import React from "react";
+import { Platform } from 'react-native';
 import image from '../../../assets/other.jpg';
-import Header from "../../components/Header";
 import styled from "styled-components/native";
 import { PoliceColors } from "../../styles";
+import Header from '../../components/Header';
 const { Alabaster } = PoliceColors;
 
-const NewsContainer = styled.SafeAreaView`
+const ChoiceContainer = styled.SafeAreaView`
   flex: 1;
   flex-direction: column;
   background-color: ${Alabaster};
+  paddingTop: ${Platform.OS === 'android' ? "25px" : 0};
 `;
-
-const Container = styled.View`
-  flex: 1;
-  justify-content: center;
-`;
-
 const Image = styled.Image`
+  flex: 1;
   width: 100%;
 `;
-const NewsListScreen = ({ route, navigation }) => {
+const OtherScreen = ({ route, navigation }) => {
   const { title } = route.params;
   return (
-    <NewsContainer>
+    <ChoiceContainer>
       <Header title={title} navigation={navigation} />
-      <Container >
-        <Image source={image} resizeMode="contain" />
-      </Container>
-    </NewsContainer>
+      <Image source={image} resizeMode="contain" />
+    </ChoiceContainer>
   );
 };
 
-export default NewsListScreen;
+export default OtherScreen;

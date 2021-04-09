@@ -1,4 +1,5 @@
 import React from "react";
+import { Platform } from 'react-native';
 import logo from '../../../assets/logo.png';
 import styled from "styled-components/native";
 import MenuList from "../../components/MenuList";
@@ -42,6 +43,7 @@ const MainContainer = styled.SafeAreaView`
   flex: 1;
   flex-direction: column;
   background-color: ${Alabaster};
+  paddingTop: ${Platform.OS === 'android' ? "25px" : 0};
 `;
 const Container = styled.View`
   flex: 1;

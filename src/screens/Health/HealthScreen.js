@@ -4,13 +4,14 @@ import styled from "styled-components/native";
 import { PoliceColors } from "../../styles";
 import FormItems from "../../components/FormItems";
 import Button from "../../components/Button";
-import { KeyboardAvoidingView, ScrollView } from "react-native";
+import { KeyboardAvoidingView, ScrollView, Platform } from "react-native";
 import FlashMessage, { showMessage } from "react-native-flash-message";
 import Icon from "@expo/vector-icons/Feather";
 const { Alabaster } = PoliceColors;
 const NewsContainer = styled.SafeAreaView`
   flex: 1;
   flex-direction: column;
+  paddingTop: ${Platform.OS === 'android' ? "25px" : 0};
 `;
 
 const Container = styled.View`

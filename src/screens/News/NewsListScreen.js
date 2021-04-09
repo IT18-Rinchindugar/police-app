@@ -4,7 +4,7 @@ import styled from "styled-components/native";
 import { PoliceColors } from "../../styles";
 import axios from "axios";
 import NewsCard from "../../components/NewsCard";
-import { FlatList, RefreshControl } from "react-native";
+import { FlatList, RefreshControl, Platform } from "react-native";
 import FeedLoad from "../../components/FeedLoad";
 const { Alabaster } = PoliceColors;
 
@@ -12,6 +12,7 @@ const NewsContainer = styled.SafeAreaView`
   flex: 1;
   flex-direction: column;
   background-color: ${Alabaster};
+  paddingTop: ${Platform.OS === 'android' ? "25px" : 0};
 `;
 
 const Container = styled.View`

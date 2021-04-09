@@ -1,4 +1,5 @@
 import React from "react";
+import { Platform } from 'react-native';
 import styled from "styled-components/native";
 import Icon from "@expo/vector-icons/Feather";
 import moment from "moment";
@@ -6,6 +7,7 @@ import moment from "moment";
 const DetailsContainer = styled.SafeAreaView`
   flex: 1;
   height: 100%;
+  paddingTop: ${Platform.OS === 'android' ? "25px" : 0};
 `;
 
 const ScrollNews = styled.ScrollView`

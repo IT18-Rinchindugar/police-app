@@ -9,7 +9,7 @@ const ListContainer = styled.TouchableOpacity`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: #fff;
+  background-color: #5e72e4;
   padding-left: 16px;
   padding-right: 8px;
   border-radius: 8px;
@@ -24,7 +24,7 @@ const ListText = styled.Text`
   line-height: 15px;
   text-align: center;
   text-transform: uppercase;
-  color: #5e72e4;
+  color: #fff;
 `;
 
 const MenuList = (props) => {
@@ -32,7 +32,7 @@ const MenuList = (props) => {
   return (
     <ListContainer onPress={onPress}>
       <ListText>{title}</ListText>
-      <Icon color="#5E72E4" size={25} name="chevron-right" />
+      <Icon color="#fff" size={25} name="chevron-right" />
     </ListContainer>
   );
 };
